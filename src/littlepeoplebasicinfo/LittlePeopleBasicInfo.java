@@ -32,22 +32,23 @@ public class LittlePeopleBasicInfo {
 
     public static void main(String[] args) throws IOException {
 
-        //----------------------------------------------------------- OPEN FILE
+        //OPEN FILE
         File theFile = new File("LittlePeopleData.csv");
         Scanner inputFile = new Scanner(theFile);
-        //------------------------------------------- DECLARE 4 PARALLEL ARRAYS
+        //DECLARE 4 PARALLEL ARRAYS
+        String names[]={};
+        String pictures []={};
+        int ages[]={};
+        double incomes[]={};
 
-
-
-        //-------------------------------------- VARIABLES FOR SPLITTING A LINE
+        //VARIABLES FOR SPLITTING A LINE
         String oneLine;
         String[] field = new String[4];
         String name;
         String picture;
         int age;
         double income;
-        //*************************************************** 1) READ FILE DATA
-        //                                               & STORE IT IN 4 ARRAYS
+        // 1) READ FILE DATA & STORE IT IN 4 ARRAYS
         // HELP:  Algorithm for ONE record (long version)
         //      - read in one csv line
         //      - split it into fields
@@ -57,31 +58,39 @@ public class LittlePeopleBasicInfo {
         //              based on current index value
         //     When that works, put a loop around the code to read/store the
         //          whole file of data.
+        oneLine=inputFile.nextLine();
+        name = field[0];
+        picture = field[1];
+        age = Integer.parseInt(field[2]);
+        income = Double.parseDouble(field[3]);
+
+        names[0]=name;
+        pictures[0]=picture;
+        ages[0]=age;
+        incomes[0]=income;
 
 
 
 
 
-
-
-        //---------------------------------------------------------- CLOSE FILE
+        //CLOSE FILE
         inputFile.close();
-        //*************************************************** 2) USE ARRAY DATA
-        //                                                 FOR PROCESSING BELOW
-        //--------------------------------------------------- FIND TOTAL SALARY
+        // 2) USE ARRAY DATA FOR PROCESSING BELOW
+        //FIND TOTAL SALARY
 
 
 
 
 
-        //----------------------------------------- FIND OLDEST & YOUNGEST AGES
+        //FIND OLDEST & YOUNGEST AGES
 
 
 
 
 
 
-        //********************************************* WRITE REPORT TO CONSOLE
+        //WRITE REPORT TO CONSOLE
+
         // COLUMN HEADER LINE:
         System.out.printf("NAME     AGE   PIC       SALARY\n");
 

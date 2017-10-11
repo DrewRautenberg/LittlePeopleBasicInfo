@@ -48,17 +48,14 @@ public class LittlePeopleBasicInfo {
         String picture;
         int age;
         double income;
-        // 1) READ FILE DATA & STORE IT IN 4 ARRAYS
-        // HELP:  Algorithm for ONE record (long version)
-        //      - read in one csv line
-        //      - split it into fields
-        //      - move each field to the appropriately named data variable
-        //              (converting to the numeric fields as needed)
-        //      - store those 4 data variables into appropriate array location
-        //              based on current index value
-        //     When that works, put a loop around the code to read/store the
-        //          whole file of data.
-        for (int i=0;i<7;i++){
+
+        //calculation variables
+        double totalSal =0;
+        int maxAge = Integer.MIN_VALUE;
+        int minAge = Integer.MAX_VALUE;
+
+        //READ FILE DATA & STORE IT IN 4 ARRAYS
+        for (int i=0;i<ages.length;i++){
             oneLine = inputFile.nextLine();
             field = oneLine.split(",");
             name = field[0];
@@ -77,23 +74,26 @@ public class LittlePeopleBasicInfo {
         //System.out.println(ages[0]);
         //System.out.println(incomes[0]);
 
-
-        //CLOSE FILE
         inputFile.close();
         // 2) USE ARRAY DATA FOR PROCESSING BELOW
         //FIND TOTAL SALARY
+        for (int i=0;i<ages.length;i++){
+            totalSal += incomes[i] ;
+        }
 
+        //find oldest
+        for (int i=0;i<ages.length;i++){
+            if (ages[i]>maxAge){
+                maxAge=ages[i];
+            }
+        }
 
-
-
-
-        //FIND OLDEST & YOUNGEST AGES
-
-
-
-
-
-
+        //find youngest
+        for (int i=0;i<ages.length;i++){
+            if (ages[i]<minAge){
+                minAge=ages[i];
+            }
+        }
         //WRITE REPORT TO CONSOLE
 
         // COLUMN HEADER LINE:

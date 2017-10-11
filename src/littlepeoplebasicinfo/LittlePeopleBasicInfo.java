@@ -43,7 +43,7 @@ public class LittlePeopleBasicInfo {
 
         //VARIABLES FOR SPLITTING A LINE
         String oneLine;
-        String[] field = new String[4];
+        String[] field;
         String name;
         String picture;
         int age;

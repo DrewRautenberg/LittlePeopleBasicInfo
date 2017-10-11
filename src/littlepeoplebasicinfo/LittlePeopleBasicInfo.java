@@ -50,12 +50,12 @@ public class LittlePeopleBasicInfo {
         double income;
 
         //calculation variables
-        double totalSal =0;
-        int maxAge = Integer.MIN_VALUE;
-        int minAge = Integer.MAX_VALUE;
+        double totalIncome =0;
+        int tempMaxAge = Integer.MIN_VALUE;
+        int tempMinAge = Integer.MAX_VALUE;
 
         //READ FILE DATA & STORE IT IN 4 ARRAYS
-        for (int i=0;i<ages.length;i++){
+        for (int i=0;i<names.length;i++){
             oneLine = inputFile.nextLine();
             field = oneLine.split(",");
             name = field[0];
@@ -77,45 +77,38 @@ public class LittlePeopleBasicInfo {
         inputFile.close();
         // 2) USE ARRAY DATA FOR PROCESSING BELOW
         //FIND TOTAL SALARY
-        for (int i=0;i<ages.length;i++){
-            totalSal += incomes[i] ;
+        for (int i=0;i<names.length;i++){
+            totalIncome += incomes[i] ;
         }
 
         //find oldest
-        for (int i=0;i<ages.length;i++){
-            if (ages[i]>maxAge){
-                maxAge=ages[i];
+        for (int i=0;i<names.length;i++){
+            if (ages[i]>tempMaxAge){
+                tempMaxAge=ages[i];
             }
         }
 
         //find youngest
-        for (int i=0;i<ages.length;i++){
-            if (ages[i]<minAge){
-                minAge=ages[i];
+        for (int i=0;i<names.length;i++){
+            if (ages[i]<tempMinAge){
+                tempMinAge=ages[i];
             }
         }
         //WRITE REPORT TO CONSOLE
 
         // COLUMN HEADER LINE:
-        System.out.printf("NAME     AGE   PIC       SALARY\n");
+        System.out.printf("NAME     AGE   PIC        SALARY\n");
 
         // DETAIL LINES:  use the parallel arrays as streams
         //                (using one of the array's length, not a hardcoded 7).
         //      Here's a format string for printf  "%-7s  %3d   %-5s %,10.2f\n"
         //              to use with name, age, pic, salary (in that order).
 
-
-
-
-
-
-
-
-
-
+        for (int i=0;i<names.length;i++){
+            System.out.printf("%-7s  %3d   %-5s $%,10.2f\n",names[i],ages[i],pictures[i],incomes[i]);
+        }
         // ENDING LINES
-//        System.out.printf("\n%-7s  %3s  %-5s  %,10.2f\n",
-//                "TOTAL", "", "", total);
-//        System.out.printf("\nAGE RANGE is from %d to %d\n",tempMin, tempMax);
+        System.out.printf("\n%-7s  %3s  %-5s  $%,10.2f\n", "TOTAL", "", "", totalIncome);
+        System.out.printf("\nAGE RANGE is from %d to %d\n",tempMinAge, tempMaxAge);
     }
 }

@@ -36,10 +36,10 @@ public class LittlePeopleBasicInfo {
         File theFile = new File("LittlePeopleData.csv");
         Scanner inputFile = new Scanner(theFile);
         //DECLARE 4 PARALLEL ARRAYS
-        String names[]={};
-        String pictures []={};
-        int ages[]={};
-        double incomes[]={};
+        String names[]=new String[7];
+        String pictures []=new String[7];
+        int ages[]=new int[7];
+        double incomes[]=new double[7];
 
         //VARIABLES FOR SPLITTING A LINE
         String oneLine;
@@ -58,19 +58,24 @@ public class LittlePeopleBasicInfo {
         //              based on current index value
         //     When that works, put a loop around the code to read/store the
         //          whole file of data.
-        oneLine=inputFile.nextLine();
-        name = field[0];
-        picture = field[1];
-        age = Integer.parseInt(field[2]);
-        income = Double.parseDouble(field[3]);
+        for (int i=0;i<7;i++){
+            oneLine = inputFile.nextLine();
+            field = oneLine.split(",");
+            name = field[0];
+            picture = field[1];
+            age = Integer.parseInt(field[2]);
+            income = Double.parseDouble(field[3]);
 
-        names[0]=name;
-        pictures[0]=picture;
-        ages[0]=age;
-        incomes[0]=income;
+            names[i] = name;
+            pictures[i] = picture;
+            ages[i] = age;
+            incomes[i] = income;
+        }
 
-
-
+        //System.out.println(names[0]);
+        //System.out.println(pictures[0]);
+        //System.out.println(ages[0]);
+        //System.out.println(incomes[0]);
 
 
         //CLOSE FILE

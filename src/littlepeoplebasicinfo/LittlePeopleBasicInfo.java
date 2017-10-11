@@ -36,10 +36,10 @@ public class LittlePeopleBasicInfo {
         File theFile = new File("LittlePeopleData.csv");
         Scanner inputFile = new Scanner(theFile);
         //DECLARE 4 PARALLEL ARRAYS
-        String names[]=new String[7];
-        String pictures []=new String[7];
-        int ages[]=new int[7];
-        double incomes[]=new double[7];
+        String names[] = new String[7];
+        String pictures[] = new String[7];
+        int ages[] = new int[7];
+        double incomes[] = new double[7];
 
         //VARIABLES FOR SPLITTING A LINE
         String oneLine;
@@ -50,12 +50,12 @@ public class LittlePeopleBasicInfo {
         double income;
 
         //calculation variables
-        double totalIncome =0;
+        double totalIncome = 0;
         int tempMaxAge = Integer.MIN_VALUE;
         int tempMinAge = Integer.MAX_VALUE;
 
         //READ FILE DATA & STORE IT IN 4 ARRAYS
-        for (int i=0;i<names.length;i++){
+        for (int i = 0; i < names.length; i++) {
             oneLine = inputFile.nextLine();
             field = oneLine.split(",");
             name = field[0];
@@ -75,23 +75,22 @@ public class LittlePeopleBasicInfo {
         //System.out.println(incomes[0]);
 
         inputFile.close();
-        // 2) USE ARRAY DATA FOR PROCESSING BELOW
         //FIND TOTAL SALARY
-        for (int i=0;i<names.length;i++){
-            totalIncome += incomes[i] ;
+        for (int i = 0; i < names.length; i++) {
+            totalIncome += incomes[i];
         }
 
         //find oldest
-        for (int i=0;i<names.length;i++){
-            if (ages[i]>tempMaxAge){
-                tempMaxAge=ages[i];
+        for (int i = 0; i < names.length; i++) {
+            if (ages[i] > tempMaxAge) {
+                tempMaxAge = ages[i];
             }
         }
 
         //find youngest
-        for (int i=0;i<names.length;i++){
-            if (ages[i]<tempMinAge){
-                tempMinAge=ages[i];
+        for (int i = 0; i < names.length; i++) {
+            if (ages[i] < tempMinAge) {
+                tempMinAge = ages[i];
             }
         }
         //WRITE REPORT TO CONSOLE
@@ -104,11 +103,11 @@ public class LittlePeopleBasicInfo {
         //      Here's a format string for printf  "%-7s  %3d   %-5s %,10.2f\n"
         //              to use with name, age, pic, salary (in that order).
 
-        for (int i=0;i<names.length;i++){
-            System.out.printf("%-7s  %3d   %-5s $%,10.2f\n",names[i],ages[i],pictures[i],incomes[i]);
+        for (int i = 0; i < names.length; i++) {
+            System.out.printf("%-7s  %3d   %-5s $%,10.2f\n", names[i], ages[i], pictures[i], incomes[i]);
         }
         // ENDING LINES
         System.out.printf("\n%-7s  %3s  %-5s  $%,10.2f\n", "TOTAL", "", "", totalIncome);
-        System.out.printf("\nAGE RANGE is from %d to %d\n",tempMinAge, tempMaxAge);
+        System.out.printf("\nAGE RANGE is from %d to %d\n", tempMinAge, tempMaxAge);
     }
 }
